@@ -50,9 +50,10 @@ func main(){
 			case "1":
 				fmt.Println("Starting session")
 				user.StartSession()
-				fmt.Println("100 pings")
-				fmt.Print("........................................\r")
-				for i:=0;i<100;i++{
+				fmt.Println("50 pings")
+				for i:=0;i<50;i++{fmt.Print(".")}
+				fmt.Print("\r")
+				for i:=0;i<50;i++{
 					user.Ping()
 					fmt.Print("o")
 					time.Sleep(1100)
