@@ -61,6 +61,23 @@ func main(){
 				fmt.Println("\nClosing session")
 				user.CloseSession()
 				fmt.Println("\n\n")
+			case "2":
+				trophies:=[]string{"Bronze","Silver","Gold","Platinum"}
+				ids:=[]string{"92488","92489","92490","92491"}
+				nm:=[]string{"1","2","3","4"}
+				fmt.Println("Test Trophies")
+				for i,tn := range trophies{ fmt.Println(i+1,"=",tn) }
+				tkz:=RawInput("What shall I test? ")
+				for i:=0;i<len(nm);i++{
+					if nm[i]==tkz {
+						if user.AwardTrophy(ids[i]){
+							fmt.Println(trophies[i]+" awarded!")
+						} else {
+							fmt.Println(trophies[i]+" failed!")
+						}
+					}
+				}
+				fmt.Println();
 			default: 
 				fmt.Println("I don't understand. Please try again!")
 		}
