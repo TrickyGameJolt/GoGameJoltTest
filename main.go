@@ -42,7 +42,10 @@ func main(){
 	for{
 		fmt.Println("1 = Test session")
 		fmt.Println("2 = Test achievement/trophy")
-		fmt.Println("3 = Test score")
+		fmt.Println("3 = Test user score")
+		fmt.Println("4 = Test guest score")
+		fmt.Println("5 = Test general score fetching")
+		fmt.Println("6 = Test user score fetching")
 		fmt.Println("Q = Quit")
 		kz:=RawInput("Make your choice: ")
 		if kz=="q" || kz=="Q" { break }
@@ -78,6 +81,23 @@ func main(){
 					}
 				}
 				fmt.Println();
+			case "3":
+				timestamp := int32(time.Now().Unix())
+				sts:=fmt.Sprintf("%d",timestamp)
+				if user.SubmitScore(sts+" unix time",sts,"341872"){
+					fmt.Println("Score ",timestamp," succesfully submitted")
+				} else {
+					fmt.Println("Too bad. I could not submit ",timestamp)
+				}
+			case "4":
+				timestamp := int32(time.Now().Unix())
+				sts:=fmt.Sprintf("%d",timestamp)
+				guest:=fmt.Sprintf("Guest %x",timestamp)
+				if gj.SubmitGuestScore(guest,gameid,gamekey,sts+" unix time",sts,"341872"){
+					fmt.Println("Score ",timestamp," succesfully submitted to a guest")
+				} else {
+					fmt.Println("Too bad. I could not submit ",timestamp)
+				}
 			default: 
 				fmt.Println("I don't understand. Please try again!")
 		}
