@@ -98,6 +98,21 @@ func main(){
 				} else {
 					fmt.Println("Too bad. I could not submit ",timestamp)
 				}
+			case "5":
+				a:=gj.FetchScore(gameid,"","341872",gamekey)
+				if a["success"]=="false" { 
+					fmt.Println("FAILED!") 
+				} else {
+					_,ok:=a["score"]
+					i:=0
+					for ok {
+						is:=""
+						if i>0 {is=fmt.Sprintf("%d",i)}
+						fmt.Println(i+1,a["score"+is],"\tscored by user: ",a["user"+is],"\tscored by guest:",a["guest"+is])
+						i++
+						_,ok=a[fmt.Sprintf("score%d",i)]
+					}
+				}
 			default: 
 				fmt.Println("I don't understand. Please try again!")
 		}
