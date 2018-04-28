@@ -6,6 +6,7 @@ import(
 	"strings"
 	"fmt"
 	"os"
+	"time"
 )
 
 const gameid="336383"
@@ -46,6 +47,19 @@ func main(){
 		kz:=RawInput("Make your choice: ")
 		if kz=="q" || kz=="Q" { break }
 		switch kz{			
+			case "1":
+				fmt.Println("Starting session")
+				user.StartSession()
+				fmt.Println("100 pings")
+				fmt.Print("........................................\r")
+				for i:=0;i<100;i++{
+					user.Ping()
+					fmt.Print("o")
+					time.Sleep(1100)
+				}
+				fmt.Println("\nClosing session")
+				user.CloseSession()
+				fmt.Println("\n\n")
 			default: 
 				fmt.Println("I don't understand. Please try again!")
 		}
